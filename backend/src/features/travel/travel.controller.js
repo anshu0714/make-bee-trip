@@ -5,7 +5,9 @@ const { getTravelData } = require("./travel.service");
 const ERROR_CODES = require("../../constants/errorCodes");
 
 const getTravel = asyncHandler(async (req, res) => {
-  const { type } = req.query;
+  const { type, ...query } = req.query;
+
+  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
   if (!type) {
     throw new AppError(
@@ -15,7 +17,7 @@ const getTravel = asyncHandler(async (req, res) => {
     );
   }
 
-  const data = getTravelData(type);
+  const data = getTravelData(type, query);
 
   if (!data) {
     throw new AppError(
@@ -26,8 +28,11 @@ const getTravel = asyncHandler(async (req, res) => {
   }
 
   return sendResponse(res, {
-    message: `${type} data fetched successfully`,
+    message: `${capitalize(type)} data fetched successfully`,
     data,
+    meta: {
+      count: data.length,
+    },
   });
 });
 
