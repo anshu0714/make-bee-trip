@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // routes
-// app.use("/api/v1/travel", travelRoutes);
+app.use("/api/v1/travel", travelRoutes);
 
 // health
 app.get("/api/v1/health", (req, res) => {
