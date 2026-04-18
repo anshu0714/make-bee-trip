@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const env = require("./config/env");
 
 const errorHandler = require("./middleware/error.middleware");
 
@@ -8,7 +9,11 @@ const searchRoutes = require("./features/search/search.routes");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: env.baseURI,
+  }),
+);
 app.use(express.json());
 
 // routes

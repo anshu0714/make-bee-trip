@@ -1,6 +1,6 @@
 const asyncHandler = require("../../utils/asyncHandler");
 const { sendResponse } = require("../../utils/response");
-const AppError = require("../../utils/AppError");
+const AppError = require("../../utils/appError");
 const { getTravelData } = require("./travel.service");
 const { upsertSearch } = require("../search/search.service");
 const ERROR_CODES = require("../../constants/errorCodes");
