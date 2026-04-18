@@ -6,6 +6,13 @@ It is a full-stack travel platform that provides a clean and responsive landing 
 
 ---
 
+## Live Link
+
+- Frontend: https://make-bee-trip.vercel.app/
+- Backend: https://make-bee-trip-backend.onrender.com/api/v1/health
+
+---
+
 ## 🚀 Tech Stack
 
 ### Frontend
@@ -220,6 +227,7 @@ GET /api/v1/search/popular
   ```
   PORT=5000
   MONGO_URI=your_mongodb_connection
+  BASE-URI=your_frontend_link
   ```
 
 ---
