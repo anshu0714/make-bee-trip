@@ -20,6 +20,8 @@ It is a full-stack travel platform that provides a clean and responsive landing 
 - **Swagger Documentation:**  
   https://make-bee-trip-backend.onrender.com/api-docs
 
+  > ⚠️ Note: Backend may take ~30 seconds to wake up if inactive.
+
 ---
 
 ## 🚀 Tech Stack
