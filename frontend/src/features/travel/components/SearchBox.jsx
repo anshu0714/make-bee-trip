@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getTravelData, getPopularSearches } from "../services/travel.api";
 import Button from "../../../components/common/Button";
 import Input from "../../../components/common/Input";
+import { logError } from "../../../../../backend/src/utils/logger";
 
 const tabs = ["flight", "bus", "train", "hotel"];
 
@@ -35,7 +36,7 @@ const SearchBox = () => {
 
         setSuggestions([...unique]);
       } catch (err) {
-        console.error(err);
+        logError("Search suggestions error:", err.message);
       }
     };
 
@@ -48,7 +49,7 @@ const SearchBox = () => {
         const res = await getPopularSearches();
         setPopular(res.data || []);
       } catch (err) {
-        console.error(err);
+        logError("Popular searches error:", err.message);
       }
     };
 

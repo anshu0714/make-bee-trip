@@ -1,4 +1,5 @@
 const Search = require("./search.model");
+const { logError } = require("../../utils/logger");
 
 const upsertSearch = async (data) => {
   const { type, from, to, city } = data;
@@ -31,7 +32,7 @@ const upsertSearch = async (data) => {
         $inc: { count: 1 },
       });
     } else {
-      console.error("Search upsert error:", err.message);
+      logError("Search upsert error:", err.message);
     }
   }
 };
