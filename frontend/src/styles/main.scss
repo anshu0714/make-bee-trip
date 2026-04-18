@@ -364,6 +364,83 @@ a {
       white-space: nowrap;
     }
   }
+
+  .popular-searches {
+    margin-top: 18px;
+    text-align: left;
+
+    h4 {
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: $text-dark;
+    }
+  }
+
+  .popular-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .popular-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 8px 12px;
+    border-radius: 999px;
+
+    background: rgba($primary, 0.08);
+    border: 1px solid rgba($primary, 0.18);
+
+    color: $primary;
+    cursor: pointer;
+
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $primary;
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba($primary, 0.25);
+    }
+  }
+
+  .popular-icon {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .popular-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    h5 {
+      margin: 0;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .arrow {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    .tagline {
+      display: none;
+    }
+
+    .route {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  }
 }
 
 /* SECTION */
@@ -407,10 +484,14 @@ a {
       box-shadow 0.25s ease,
       border-color 0.25s ease;
 
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 40px rgba(16, 24, 40, 0.12);
-      border-color: rgba(0, 0, 0, 0.06);
+    &.clickable {
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(16, 24, 40, 0.12);
+        border-color: rgba($primary, 0.2);
+      }
     }
 
     .icon {
@@ -559,7 +640,7 @@ a {
 /* TESTIMONIALS */
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 
   .testimonial-card {
@@ -631,39 +712,149 @@ a {
 /* CARD */
 .travel-card {
   background: white;
-  padding: 20px;
   border-radius: calc(#{$radius} + 6px);
   border: 1px solid #eef1f5;
   box-shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
+  transition: 0.25s;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 18px 40px rgba(16, 24, 40, 0.12);
-    border-color: rgba(0, 0, 0, 0.06);
+  }
+
+  .card-content {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
 
   .card-header {
     display: flex;
-    align-items: flex-start;
     justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 14px;
+    align-items: flex-start;
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .sub {
+      font-size: 0.8rem;
+      color: $text-light;
+    }
+
+    .price-box {
+      text-align: right;
+
+      .price {
+        color: $primary;
+        font-weight: 800;
+        font-size: 1.1rem;
+      }
+
+      .per-night {
+        font-size: 0.75rem;
+        color: $text-light;
+      }
+    }
   }
 
-  .card-body {
-    display: grid;
-    gap: 8px;
-    margin-bottom: 16px;
-    color: $text-dark;
+  .card-route {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    .location {
+      display: flex;
+      flex-direction: column;
+
+      .city {
+        font-weight: 600;
+      }
+
+      .time {
+        font-size: 0.8rem;
+        color: $text-light;
+      }
+    }
+
+    .divider {
+      text-align: center;
+      font-size: 0.85rem;
+      color: $text-light;
+
+      span {
+        display: block;
+        font-size: 1.2rem;
+      }
+    }
+
+    .hotel-info {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .city {
+        font-weight: 600;
+      }
+    }
   }
 
-  .price {
-    color: $primary;
-    font-weight: 800;
+  .card-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: $text-light;
+  }
+
+  .card-footer {
+    margin-top: auto;
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
+/* HOTEL CARD */
+.travel-card.hotel-card {
+  .hotel-image {
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 12px;
+
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.4),
+        transparent 60%
+      );
+
+      .rating {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 5px 10px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+    }
   }
 }
 
@@ -830,5 +1021,80 @@ a {
 
   .search-box .tabs {
     justify-content: flex-start;
+  }
+}
+
+/* LOADER */
+.loader {
+  @include flex-center;
+  flex-direction: column;
+  padding: 60px 20px;
+  font-weight: 600;
+  color: $text-light;
+  gap: 12px;
+
+  &::before {
+    content: "";
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 4px solid rgba($primary, 0.2);
+    border-top-color: $primary;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* EMPTY STATE */
+.empty-state {
+  @include flex-center;
+  flex-direction: column;
+  text-align: center;
+  padding: 80px 20px;
+  border-radius: calc(#{$radius} + 6px);
+  background: white;
+  border: 1px dashed rgba(15, 23, 42, 0.12);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: $text-dark;
+  }
+
+  p {
+    color: $text-light;
+    max-width: 300px;
+  }
+}
+
+/* SKELETON LOADER */
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.skeleton-card {
+  height: 160px;
+  border-radius: calc(#{$radius} + 6px);
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 37%, #f1f5f9 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border: 1px solid #eef1f5;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
   }
 }

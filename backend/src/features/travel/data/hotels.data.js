@@ -5,6 +5,7 @@ const hotels = [
     city: "Delhi",
     rating: 4.7,
     pricePerNight: 9000,
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945",
   },
   {
     id: "HT002",
@@ -12,6 +13,7 @@ const hotels = [
     city: "Mumbai",
     rating: 4.8,
     pricePerNight: 12000,
+    image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa",
   },
   {
     id: "HT003",
@@ -19,6 +21,7 @@ const hotels = [
     city: "Bangalore",
     rating: 4.6,
     pricePerNight: 8500,
+    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",
   },
   {
     id: "HT004",
@@ -26,6 +29,7 @@ const hotels = [
     city: "Jaipur",
     rating: 4.9,
     pricePerNight: 15000,
+    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b",
   },
   {
     id: "HT005",
@@ -33,6 +37,7 @@ const hotels = [
     city: "Delhi",
     rating: 4.5,
     pricePerNight: 7000,
+    image: "https://images.unsplash.com/photo-1590490360182-c33d57733427",
   },
   {
     id: "HT006",
@@ -40,6 +45,7 @@ const hotels = [
     city: "Mumbai",
     rating: 4.6,
     pricePerNight: 9500,
+    image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4",
   },
   {
     id: "HT007",
@@ -47,6 +53,7 @@ const hotels = [
     city: "Bangalore",
     rating: 4.7,
     pricePerNight: 10000,
+    image: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461",
   },
   {
     id: "HT008",
@@ -54,6 +61,7 @@ const hotels = [
     city: "Chennai",
     rating: 4.4,
     pricePerNight: 6500,
+    image: "https://images.unsplash.com/photo-1564501049412-61c2a3083791",
   },
 ];
 

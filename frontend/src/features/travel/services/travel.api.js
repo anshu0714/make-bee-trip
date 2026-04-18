@@ -8,3 +8,12 @@ export const getTravelData = async (params) => {
     handleError(err);
   }
 };
+
+export const getPopularSearches = async () => {
+  try {
+    const res = await api.get("/search/popular");
+    return handleResponse(res);
+  } catch (err) {
+    handleError(err);
+  }
+};

@@ -19,9 +19,10 @@ const FeaturedHotels = () => {
         {hotels.map((h) => (
           <div key={h.id} className="hotel-card">
             <img
-              src={`https://source.unsplash.com/400x300/?hotel,${h.city}`}
+              src={`${h.image}?w=400&q=70&auto=format`}
               alt={h.name}
-            />
+              loading="lazy"
+            />{" "}
             <h3>{h.name}</h3>
             <p>{h.city}</p>
             <p>⭐ {h.rating}</p>

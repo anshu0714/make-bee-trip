@@ -4,6 +4,7 @@ const cors = require("cors");
 const errorHandler = require("./middleware/error.middleware");
 
 const travelRoutes = require("./features/travel/travel.routes");
+const searchRoutes = require("./features/search/search.routes");
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 // routes
 app.use("/api/v1/travel", travelRoutes);
+app.use("/api/v1/search", searchRoutes);
 
 // health
 app.get("/api/v1/health", (req, res) => {

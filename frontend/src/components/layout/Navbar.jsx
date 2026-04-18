@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { showSuccess } from "../../utils/toast.util";
 import logo from "../../assets/logo.png";
 import Button from "../common/Button";
 
@@ -12,7 +13,7 @@ const Navbar = () => {
   const scrollWithOffset = (el) => {
     const navbar = document.querySelector(".navbar");
     const navbarHeight = navbar ? navbar.offsetHeight : 76;
-    const extraGap = 140;
+    const extraGap = 200;
     const y =
       el.getBoundingClientRect().top + window.scrollY - navbarHeight - extraGap;
 
@@ -80,14 +81,32 @@ const Navbar = () => {
             </HashLink>
 
             <div className="nav-actions mobile-actions">
-              <Button variant="outline">Login</Button>
-              <Button>Sign Up</Button>
+              <Button
+                onClick={() => showSuccess("Login feature coming soon 🔐")}
+                variant="outline"
+              >
+                Login
+              </Button>
+              <Button
+                onClick={() => showSuccess("Signup feature coming soon 🔐")}
+              >
+                Sign Up
+              </Button>
             </div>
           </nav>
 
           <div className="nav-actions desktop-actions">
-            <Button variant="outline">Login</Button>
-            <Button>Sign Up</Button>
+            <Button
+              onClick={() => showSuccess("Login feature coming soon 🔐")}
+              variant="outline"
+            >
+              Login
+            </Button>
+            <Button
+              onClick={() => showSuccess("Signup feature coming soon 🔐")}
+            >
+              Sign Up
+            </Button>
           </div>
         </div>
       </header>

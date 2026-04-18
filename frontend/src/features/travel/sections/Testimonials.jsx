@@ -3,11 +3,15 @@ import SectionWrapper from "../../../components/common/SectionWrapper";
 const testimonials = [
   {
     name: "Rahul",
-    text: "Best booking experience ever!",
+    text: "Best booking experience ever! I found amazing deals and had a smooth trip. Will use again!",
   },
   {
     name: "Sneha",
-    text: "Super easy and affordable.",
+    text: "Love the user-friendly interface and great customer support. Made my travel planning a breeze!",
+  },
+  {
+    name: "Arjun",
+    text: "Highly recommend! The personalized recommendations helped me discover hidden gems on my trip. Fantastic service!",
   },
 ];
 

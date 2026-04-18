@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 
 import Navbar from "../../../components/layout/Navbar";
@@ -8,12 +8,19 @@ import TravelCard from "../components/TravelCard";
 import FiltersSidebar from "../components/FiltersSidebar";
 
 import { getTravelData } from "../services/travel.api";
+import { showError } from "../../../utils/toast.util";
 
 const Results = () => {
-  const location = useLocation();
+  const [params] = useSearchParams();
+
   const state = useMemo(
-    () => location.state || { type: "flight" },
-    [location.state],
+    () => ({
+      type: params.get("type") || "flight",
+      from: params.get("from") || "",
+      to: params.get("to") || "",
+      city: params.get("city") || "",
+    }),
+    [params],
   );
 
   const [data, setData] = useState([]);
@@ -23,12 +30,10 @@ const Results = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-
         const res = await getTravelData(state);
         setData(res.data);
-        console.log(res.data);
       } catch (err) {
-        console.error(err);
+        showError(err.message);
       } finally {
         setLoading(false);
       }
@@ -48,7 +53,7 @@ const Results = () => {
 
       setData(res.data);
     } catch (err) {
-      console.error(err);
+      showError(err.message);
     } finally {
       setLoading(false);
     }
@@ -68,8 +73,19 @@ const Results = () => {
             {state.type.toUpperCase()} Results ({data.length})
           </h2>
 
+          {!loading && data.length === 0 && (
+            <div className="empty-state">
+              <h3>No Results Found</h3>
+              <p>Try changing filters or search again</p>
+            </div>
+          )}
+
           {loading ? (
-            <p>Loading...</p>
+            <div className="skeleton-grid">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="skeleton-card" />
+              ))}
+            </div>
           ) : (
             <div className="results-grid">
               {data.map((item) => (
