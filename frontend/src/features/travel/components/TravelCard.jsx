@@ -1,25 +1,34 @@
-import FlightCard from "./FlightCard";
-import BusCard from "./BusCard";
-import TrainCard from "./TrainCard";
-import HotelCard from "./HotelCard";
+import Button from "../../../components/common/Button";
 
 const TravelCard = ({ item, type }) => {
-  switch (type) {
-    case "flight":
-      return <FlightCard item={item} />;
+  return (
+    <div className="travel-card">
+      <div className="card-header">
+        <h3>{item.airline || item.operator || item.train || item.name}</h3>
+        <span className="price">₹{item.price || item.pricePerNight}</span>
+      </div>
 
-    case "bus":
-      return <BusCard item={item} />;
+      <div className="card-body">
+        {type !== "hotel" ? (
+          <>
+            <p>
+              {item.from} → {item.to}
+            </p>
+            <p>
+              {item.departure} • {item.duration}
+            </p>
+          </>
+        ) : (
+          <>
+            <p>{item.city}</p>
+            <p>⭐ {item.rating}</p>
+          </>
+        )}
+      </div>
 
-    case "train":
-      return <TrainCard item={item} />;
-
-    case "hotel":
-      return <HotelCard item={item} />;
-
-    default:
-      return null;
-  }
+      <Button>Book Now</Button>
+    </div>
+  );
 };
 
 export default TravelCard;

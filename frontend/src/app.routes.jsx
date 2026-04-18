@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
-import Travel from "./features/travel/pages/Travel";
+import Landing from "./features/travel/pages/Landing";
+import Results from "./features/travel/pages/Results";
 
 export const routes = createBrowserRouter([
   {
@@ -8,7 +9,11 @@ export const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Travel />,
+        element: <Landing />,
+      },
+      {
+        path: "/results",
+        element: <Results />,
       },
     ],
   },
