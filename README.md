@@ -6,10 +6,19 @@ It is a full-stack travel platform that provides a clean and responsive landing 
 
 ---
 
-## Live Link
+## 🌐Live Demo & APIs
 
-- Frontend: https://make-bee-trip.vercel.app/
-- Backend: https://make-bee-trip-backend.onrender.com/api/v1/health
+- **Frontend (Live App):**  
+  https://make-bee-trip.vercel.app
+
+- **Backend Health Check:**  
+  https://make-bee-trip-backend.onrender.com/api/v1/health
+
+- **Sample API (Flights Data):**  
+  https://make-bee-trip-backend.onrender.com/api/v1/travel?type=flight
+
+- **Swagger Documentation:**  
+  https://make-bee-trip-backend.onrender.com/api-docs
 
 ---
 
@@ -174,7 +183,7 @@ npm install
 Create `.env` file:
 
 ```
-VITE_API_URL=<backend-url>/api/v1
+VITE_API_BASE_URL=<backend-url>/api/v1
 ```
 
 Run server:
@@ -214,7 +223,7 @@ GET /api/v1/search/popular
 - Add environment variable:
 
   ```
-  VITE_API_URL=<backend-url>/api/v1
+  VITE_API_BASE_URL=<backend-url>/api/v1
   ```
 
 ---

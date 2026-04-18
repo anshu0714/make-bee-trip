@@ -1,0 +1,245 @@
+openapi: 3.0.0
+info:
+  title: Make Bee Trip API
+  description: API documentation for Travel Booking platform (Flights, Buses, Trains, Hotels, Search)
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:5000/api/v1
+    description: Local Development Server
+
+  - url: https://make-bee-trip-backend.onrender.com/api/v1
+    description: Production Server
+
+paths:
+  /health:
+    get:
+      summary: Health Check
+      description: Check if server is running
+      responses:
+        "200":
+          description: Server is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Server running 🚀
+
+  /travel:
+    get:
+      summary: Get Travel Data
+      description: Fetch flights, buses, trains, or hotels with filters
+      parameters:
+        - name: type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [flight, bus, train, hotel]
+
+        - name: from
+          in: query
+          schema:
+            type: string
+            example: Delhi
+
+        - name: to
+          in: query
+          schema:
+            type: string
+            example: Mumbai
+
+        - name: city
+          in: query
+          schema:
+            type: string
+            example: Goa
+
+        - name: keyword
+          in: query
+          schema:
+            type: string
+
+        - name: minPrice
+          in: query
+          schema:
+            type: number
+
+        - name: maxPrice
+          in: query
+          schema:
+            type: number
+
+        - name: rating
+          in: query
+          schema:
+            type: number
+            example: 4
+
+        - name: sort
+          in: query
+          schema:
+            type: string
+            example: price_asc
+
+      responses:
+        "200":
+          description: Travel data fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Flight data fetched successfully
+                  data:
+                    type: array
+                    items:
+                      oneOf:
+                        - $ref: "#/components/schemas/Flight"
+                        - $ref: "#/components/schemas/Bus"
+                        - $ref: "#/components/schemas/Train"
+                        - $ref: "#/components/schemas/Hotel"
+                  meta:
+                    type: object
+                    properties:
+                      count:
+                        type: number
+                        example: 10
+
+        "400":
+          description: Invalid request
+
+  /search/popular:
+    get:
+      summary: Get Popular Searches
+      description: Returns top searched routes/cities
+      responses:
+        "200":
+          description: Popular searches fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Popular searches fetched successfully
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Search"
+
+components:
+  schemas:
+    Flight:
+      type: object
+      properties:
+        id:
+          type: string
+        airline:
+          type: string
+        from:
+          type: string
+        to:
+          type: string
+        departure:
+          type: string
+        arrival:
+          type: string
+        duration:
+          type: string
+        price:
+          type: number
+
+    Bus:
+      type: object
+      properties:
+        id:
+          type: string
+        operator:
+          type: string
+        from:
+          type: string
+        to:
+          type: string
+        departure:
+          type: string
+        arrival:
+          type: string
+        duration:
+          type: string
+        type:
+          type: string
+        price:
+          type: number
+
+    Train:
+      type: object
+      properties:
+        id:
+          type: string
+        train:
+          type: string
+        from:
+          type: string
+        to:
+          type: string
+        departure:
+          type: string
+        arrival:
+          type: string
+        duration:
+          type: string
+        class:
+          type: string
+        price:
+          type: number
+
+    Hotel:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        city:
+          type: string
+        rating:
+          type: number
+        pricePerNight:
+          type: number
+        image:
+          type: string
+
+    Search:
+      type: object
+      properties:
+        type:
+          type: string
+          example: flight
+        from:
+          type: string
+          example: Delhi
+        to:
+          type: string
+          example: Mumbai
+        city:
+          type: string
+          example: Goa
+        count:
+          type: number
+          example: 5
